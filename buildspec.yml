@@ -1,0 +1,23 @@
+# buildspec.yml
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 14
+    commands:
+      - echo "Installing dependencies"
+      - npm install
+  build:
+    commands:
+      - echo "Running unit tests"
+      - npm test
+      - echo "Packaging Lambda function"
+      - zip -r lambda.zip index.js config.js node_modules/
+  post_build:
+    commands:
+      - echo "Build completed"
+artifacts:
+  files:
+    - lambda.zip
+  discard-paths: yes
