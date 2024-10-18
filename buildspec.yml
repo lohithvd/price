@@ -8,9 +8,14 @@ phases:
     commands:
       - echo "Installing dependencies"
       - npm install
+  pre_build:
+    commands:
+      - echo "Setting execute permissions on Jest"
+      - chmod +x ./node_modules/.bin/jest
   build:
     commands:
       - echo "Running unit tests"
+      - npx jest
       - npm test
       - echo "Packaging Lambda function"
       - zip -r lambda.zip index.js config.js node_modules/
