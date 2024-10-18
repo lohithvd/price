@@ -5,8 +5,9 @@
     "description": "Lambda function to update product prices",
     "main": "index.js",
     "scripts": {
-      "test": "jest"
-    },
+  "test": "npx jest"
+}
+,
     "dependencies": {
       "mysql": "^2.18.1"
     },
